@@ -1,0 +1,443 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Разделяет логотип и меню */
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 50px; /* Задайте фиксированную ширину логотипа */
+}
+
+.burger {
+    display: flex; /* Показываем бургер-меню на всех экранах */
+    flex-direction: column; /* Вертикальное расположение линий */
+    cursor: pointer; /* Указатель для курсора */
+    margin-left: 10px; /* Отступ от логотипа */
+}
+
+.line {
+    height: 4px; /* Высота линии */
+    width: 30px; /* Ширина линии */
+    background-color: #4caf50; /* Цвет линий */
+    margin: 3px 0; /* Отступы между линиями */
+    transition: all 0.3s ease; /* Плавная анимация для линий */
+}
+
+.burger.active .line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg); /* Первая линия превращается в верхнюю часть крестика */
+}
+
+.burger.active .line:nth-child(2) {
+    opacity: 0; /* Средняя линия исчезает */
+}
+
+.burger.active .line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg); /* Третья линия превращается в нижнюю часть крестика */
+}
+
+
+/* Стили для навигации */
+.nav {
+    display: none; /* Скрываем верхнее меню */
+}
+
+.nav.active {
+    display: flex; /* Отображаем меню при активации */
+}
+
+.nav ul {
+    list-style: none; /* Убираем маркеры из списка */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Горизонтальное расположение элементов меню */
+}
+
+.nav ul li {
+    margin: 0 15px;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    font-size: 1em;
+    color: #4caf50;
+}
+
+@media (max-width: 768px) {
+    .burger {
+        display: flex; /* Показываем бургер-меню на мобильных устройствах */
+        flex-direction: column; /* Вертикальное расположение линий */
+        cursor: pointer; /* Указатель для курсора */
+        margin-left: auto; /* Отступ от логотипа */
+        margin-right: 20px; /* Отступ справа для бургер-меню */
+    }
+
+    .nav {
+        display: none; /* Скрываем навигацию по умолчанию на мобильных устройствах */
+        flex-direction: column; /* Вертикальное расположение для мобильных устройств */
+        align-items: center; /* Центрируем элементы навигации */
+        width: 100%; /* Ширина навигации на мобильных устройствах */
+        background-color: #f8f8f8; /* Цвет фона навигации */
+        position: absolute; /* Позиционирование навигации под заголовком */
+        top: 60px; /* Расположение под заголовком */
+        left: 0;
+        z-index: 999; /* Убедитесь, что навигация поверх других элементов */
+    }
+
+    .nav.active {
+        display: none; /* Показываем навигацию при активации бургер-меню */
+    }
+
+    .nav ul {
+        flex-direction: column; /* Вертикальное расположение элементов меню на мобильных устройствах */
+        width: 100%; /* Ширина меню на мобильных устройствах */
+        padding-top: 10px; /* Отступы сверху и снизу для первого элемента меню */
+	}
+	
+	.nav ul li {
+		margin-bottom: 10px; /* Отступ между элементами меню на мобильных устройствах */
+	}
+}
+
+
+
+
+/* Стили для сайдбара */
+.sidebar {
+    position: fixed; /* Зафиксированное положение */
+    width: 250px; /* Ширина сайдбара */
+    height: 100%; /* Полная высота страницы */
+    top: 0; /* Угловое положение */
+    left: -250px; /* Скрыть сайдбар за пределами экрана */
+    background-color: #f8f8f8; /* Цвет фона сайдбара */
+    transition: left 0.3s ease; /* Плавный переход */
+    z-index: 1000; /* Поверх остальных элементов */
+}
+
+.sidebar.active {
+    left: 0; /* Позиция при активации */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 20px; /* Отступы внутри сайдбара */
+    margin: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0; /* Отступы между пунктами меню */
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #4caf50;
+    font-size: 1.5em;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        left: -250px; /* Скрыть сайдбар по умолчанию на мобильных устройствах */
+        width: 200px; /* Уменьшаем ширину сайдбара на мобильных устройствах */
+    }
+
+    .sidebar.active {
+        left: 0; /* Показываем сайдбар при активации */
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Стили для вертикальной ориентации */
+    align-items: center; /* Центрируем содержимое */
+    padding: 20px; /* Отступы вокруг основного содержимого */
+    margin: 0; /* Убираем отступы по умолчанию */
+    text-align: center;
+}
+
+h1 {
+    color: #4caf50;
+    font-size: 3em; /* Уменьшаем размер заголовка для адаптивности */
+    text-align: center;
+    margin: 0;
+}
+
+.main-content {
+    display: flex; /* Используем flexbox для основного содержимого */
+    flex-wrap: wrap; /* Позволяет элементам переходить на новую строку */
+    width: 100%; /* Занимаем всю ширину доступного пространства */
+    padding: 20px; /* Добавляем отступы вокруг основного содержимого */
+    box-sizing: border-box; /* Учитываем отступы в расчете ширины */
+}
+
+.text-container {
+    flex: 1; /* Занимает свободное пространство */
+    max-width: 600px; /* Ограничиваем максимальную ширину текстового контейнера */
+    padding-right: 20px; /* Отступ справа для текстового контейнера */
+}
+
+.image-container {
+    flex: 1; /* Занимает свободное пространство */
+    text-align: right; /* Выравниваем изображение вправо */
+}
+
+.image-container img {
+    max-width: 100%; /* Ограничивает ширину изображения */
+    height: auto; /* Сохраняет пропорции изображения */
+}
+
+
+/* Новые стили для центрации текста и увеличения размера шрифта */
+.welcome-message {
+    font-size: 1.5em; /* Увеличиваем размер шрифта */
+    margin: 20px 0; /* Добавляем отступы сверху и снизу */
+}
+
+/* Стили для заголовка приложения */
+.app-header {
+    display: flex; /* Используем flexbox для выравнивания */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    justify-content: center; /* Центруем содержимое горизонтально */
+    margin: 40px 0; /* Отступы для заголовка */
+}
+
+/* Для мобильных устройств (max-width: 767px) */
+@media (max-width: 767px) {
+    body {
+        padding: 10px; /* Уменьшаем отступы для мобильных устройств */
+        font-size: 14px; 
+    }
+
+    h1 {
+        font-size: 2em; 
+    }
+
+    .main-content {
+        flex-direction: column; 
+    }
+
+    .text-container, .image-container {
+        width: 100%; 
+        padding-right: 0;
+        text-align: center;
+    }
+    
+    .sidebar {
+        left: -250px; 
+        width: 200px;
+        transition-duration: .5s;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .error-image {
+        max-width: 80%; /* На мобильных устройствах изображение займет 80% ширины */
+    }
+
+    .error-message {
+        font-size: 1.2em; /* Уменьшаем размер шрифта для мобильных устройств */
+    }
+}
+
+
+/* Для планшетов (min-width: 768px and max-width: 1024px)*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .main-content {
+        flex-direction: row;
+    }
+
+    .text-container, .image-container {
+        padding-right: 10px;
+        text-align: center;
+        max-width: 50%;
+        flex: 1;
+    }
+
+    .error-image {
+        max-width: 100%; /* Картинка всегда будет в пределах контейнера */
+        height: auto;
+    }
+
+    .error-message {
+        font-size: 1.5em; /* Уменьшаем размер шрифта на планшетах */
+    }
+}
+
+/* Для десктопов (min-width :1025px)*/
+@media (min-width: 1025px) {
+    body {
+        padding: 20px; 
+        font-size: 18px; 
+    }
+
+    h1 {
+        font-size: 3em; 
+    }
+
+    .main-content {
+        display: flex; 
+    }
+
+    .text-container, .image-container {
+        flex: 1; /* Позволяет элементам занимать равное пространство */
+    }
+
+    .error-image {
+        max-width: 30%; /* Для больших экранов оставляем 30% */
+    }
+
+    .error-message {
+        font-size: 2em; /* Возвращаем стандартный размер шрифта */
+    }
+}
+
+
+.error-image {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.error-message {
+    text-align: center;
+    font-size: 2em; /* Увеличиваем размер шрифта для сообщения об ошибке */
+    margin: 20px 0; /* Добавляем отступы сверху и снизу */
+}
+
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+
+
+
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 90%; /* Ширина диалогового окна составляет 90% от ширины родительского контейнера */
+    max-width: 600px; /* Максимальная ширина 600px */
+    max-height: 80vh; /* Максимальная высота */
+    overflow-y: auto; /* Добавляем прокрутку, если контент превышает максимальную высоту */
+    z-index: 1001;
+}
+
+
+h2 {
+    text-align: center; /* Центрируем заголовок */
+    margin-bottom: 20px; /* Отступ снизу для более красивого визуала */
+}
+
+.overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Затемнение фона */
+    z-index: 1000;
+}
+
+.overlay.active {
+    display: flex; /* Показываем оверлей, когда у него есть класс active */
+}
+
+table {
+    width: 100%; /* Задаем ширину таблицы */
+    border-collapse: collapse; /* Убираем границы между ячейками */
+}
+
+td {
+    padding: 10px; /* Добавляем отступы для ячеек */
+}
+
+.button-container {
+    text-align: center; /* Центрируем кнопки внутри контейнера */
+}
+
+button {
+    padding: 10px 20px; /* Добавляем отступы для кнопок */
+    cursor: pointer; /* Указываем на возможность клика */
+    margin: 0 10px; /* Добавляем отступ между кнопками */
+}
+
+.close {
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.task-container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам переходить на новую строку */
+    gap: 20px; /* Расстояние между карточками */
+    margin-top: 20px; /* Отступ сверху для отделения от кнопки "Добавить задачу" */
+    justify-content: center; /* Центрирует карточки по горизонтали */
+}
+
+
+.task-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    min-width: 150px; /* Минимальная ширина карточки */
+    flex: 0 1 calc(20% - 20px); /* Пять карточек в ряд, с учетом отступов */
+}
+
+
+
+
+
