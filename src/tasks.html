@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить задачу</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+</head>
+
+<body>
+
+    <header>
+        <img src="logo.svg" alt="Логотип приложения" class="logo"> 
+        <div class="burger" id="burger">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav class="nav" id="nav">
+            <ul>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="projects.html">Проекты</a></li> 
+                    <li><span  class="active">Список задач</span></li>
+                    <li><a href="about.html">О приложении</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="projects.html">Проекты</a></li> 
+                <li><span  class="active">Список задач</span></li>
+                <li><a href="about.html">О приложении</a></li>
+        </ul>
+    </nav>
+
+    
+    <h1>Управление задачами</h1>
+    <button id="openDialog">Добавить задачу</button>
+
+    <dialog id="taskDialog">
+        <h2>Форма добавления задачи</h2>
+        <form id="taskForm">
+            <table>
+                <tr>
+                    <td><label for="taskName">Название задачи:</label></td>
+                    <td><input type="text" id="taskName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="taskDescription">Описание задачи:</label></td>
+                    <td><textarea id="taskDescription" required></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="button-container">
+                            <button type="submit">Добавить</button>
+                            <button type="button" class="close">Отмена</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </dialog>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="task-container">
+        <div class="task-card">
+            <div class="task-header">Задача 1</div>
+            <div>Описание задачи 1</div>
+            <button class="delete-button" onclick="deleteTask(this)">Удалить</button>
+        </div>
+        <div class="task-card">
+            <div class="task-header">Задача 2</div>
+            <div>Описание задачи 2</div>
+            <button class="delete-button" onclick="deleteTask(this)">Удалить</button>
+        </div>
+        <div class="task-card">
+            <div class="task-header">Задача 3</div>
+            <div>Описание задачи 3</div>
+            <button class="delete-button" onclick="deleteTask(this)">Удалить</button>
+        </div>
+        <div class="task-card">
+            <div class="task-header">Задача 4</div>
+            <div>Описание задачи 4</div>
+            <button class="delete-button" onclick="deleteTask(this)">Удалить</button>
+        </div>
+        <div class="task-card">
+            <div class="task-header">Задача 5</div>
+            <div>Описание задачи 5</div>
+            <button class="delete-button" onclick="deleteTask(this)">Удалить</button>
+        </div>
+    </div>
+    
+    <script src="bundle.js"></script>
+       
+</body>
+
+</html>
+
+
